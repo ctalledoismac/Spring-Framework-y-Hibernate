@@ -1,63 +1,92 @@
 package com.distribuida.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "factura_detalle")
 public class FacturaDetalle {
 
-	private int idFacturaDetalle;
-	private int Cantidad;
-	private Double Subtotal;
-	
-	private Factura factura;
-	
-	private Libro libro;
-	
-	public FacturaDetalle() {
-		
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_factura_detalle")
+    private int idFacturaDetalle;
 
-	public int getIdFacturaDetalle() {
-		return idFacturaDetalle;
-	}
+    @Column(name = "cantidad")
+    private int cantidad;
 
-	public void setIdFacturaDetalle(int idFacturaDetalle) {
-		this.idFacturaDetalle = idFacturaDetalle;
-	}
+    @Column(name = "subtotal")
+    private Double subtotal;
 
-	public int getCantidad() {
-		return Cantidad;
-	}
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "id_factura")
+    private Factura factura;
 
-	public void setCantidad(int cantidad) {
-		Cantidad = cantidad;
-	}
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "id_libro") 
+    private Libro libro;
 
-	public Double getSubtotal() {
-		return Subtotal;
-	}
+    public FacturaDetalle() {
+    }
 
-	public void setSubtotal(Double subtotal) {
-		Subtotal = subtotal;
-	}
+    public FacturaDetalle(int idFacturaDetalle, int cantidad, Double subtotal, Factura factura, Libro libro) {
+        this.idFacturaDetalle = idFacturaDetalle;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
+        this.factura = factura;
+        this.libro = libro;
+    }
 
-	public Factura getFactura() {
-		return factura;
-	}
+    public int getIdFacturaDetalle() {
+        return idFacturaDetalle;
+    }
 
-	public void setFactura(Factura factura) {
-	}
+    public void setIdFacturaDetalle(int idFacturaDetalle) {
+        this.idFacturaDetalle = idFacturaDetalle;
+    }
 
-	public Libro getLibro() {
-		return libro;
-	}
+    public int getCantidad() {
+        return cantidad;
+    }
 
-	public void setLibro(Libro libro) {
-		this.libro = libro;
-	}
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
-	@Override
-	public String toString() {
-		return "FacturaDetalle [idFacturaDetalle=" + idFacturaDetalle + ", Cantidad=" + Cantidad + ", Subtotal="
-				+ Subtotal + ", factura=" + factura + ", libro=" + libro + "]";
-	}
-	
-	
+    public Double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(Double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
+    }
+
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
+
+    @Override
+    public String toString() {
+        return "FacturaDetalle [idFacturaDetalle=" + idFacturaDetalle + ", cantidad=" + cantidad + ", subtotal=" + subtotal
+                + ", factura=" + factura + ", libro=" + libro + "]";
+    }
 }

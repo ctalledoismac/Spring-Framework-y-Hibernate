@@ -6,17 +6,15 @@ import com.distribuida.entities.Autor;
 
 public interface AutorDAO {
 	
-	public List<Autor> finAll();
+	public List<Autor> findAll();
 	
-	public Autor FinOne(int id);
+	public Autor findOne(int id);
 	
 	public void add(Autor autor);
 	
-	public void up(Autor autor);
+	public void update(Autor autor);
 	
-	public void del(int id);
-	
-	//
-	public List<Autor> finAll(String busqueda) ;
-	
+	public void delete(int id);
+
+	public List<Autor> findAll(String busqueda);
 }

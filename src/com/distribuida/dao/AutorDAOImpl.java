@@ -20,43 +20,38 @@ public class AutorDAOImpl implements AutorDAO {
 	
 	@Override
 	@Transactional
-	public List<Autor> finAll() {
-		// TODO Auto-generated method stub
+	public List<Autor> findAll() {
 		Session session = sessionFactory.getCurrentSession();
 		return session.createQuery("SELECT au FROM Autor au", Autor.class).getResultList();
 	}
 
 	@Override
 	@Transactional
-	public Autor FinOne(int id) {
-		// TODO Auto-generated method stub
+	public Autor findOne(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("SELECT au FROM Autor au WHERE au.idAutor =: keyIdAutor");
+		Query<Autor> query = session.createQuery("SELECT au FROM Autor au WHERE au.idAutor = :keyIdAutor", Autor.class);
 		query.setParameter("keyIdAutor", id);
-		return (Autor) query.getSingleResult();
+		return query.uniqueResult();
 	}
 
 	@Override
 	@Transactional
 	public void add(Autor autor) {
-		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(autor);
 	}
 
 	@Override
 	@Transactional
-	public void up(Autor autor) {
-		// TODO Auto-generated method stub
+	public void update(Autor autor) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("UPDATE Autor SET nombre =: Nombre, "
-				+ " apellido =: Apellido, "
-				+ " pais =: Pais, "
-				+ " direccion =: Direccion, "
-				+ " telefono =: Telefono, "
-				+ " correo =: Correo "
-				+ " WHERE idAutor =: idAutor "
-				);
+		Query query = session.createQuery("UPDATE Autor SET nombre = :Nombre, "
+				+ "apellido = :Apellido, "
+				+ "pais = :Pais, "
+				+ "direccion = :Direccion, "
+				+ "telefono = :Telefono, "
+				+ "correo = :Correo "
+				+ "WHERE idAutor = :idAutor");
 		
 		query.setParameter("Nombre", autor.getNombre());
 		query.setParameter("Apellido", autor.getApellido());
@@ -71,31 +66,26 @@ public class AutorDAOImpl implements AutorDAO {
 
 	@Override
 	@Transactional
-	public void del(int id) {
-		// TODO Auto-generated method stub
+	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("DELETE FROM Autor au WHERE au.idAutor =: idAutor");
-		
+		Query query = session.createQuery("DELETE FROM Autor au WHERE au.idAutor = :idAutor");
 		query.setParameter("idAutor", id);
-		
 		query.executeUpdate();
 	}
 
 	@Override
 	@Transactional
-	public List<Autor> finAll(String busqueda) {
-		// TODO Auto-generated method stub
+	public List<Autor> findAll(String busqueda) {
 		Session session = sessionFactory.getCurrentSession();
 		Query<Autor> query = session.createQuery("SELECT au FROM Autor au "
-		        + " WHERE au.Nombre LIKE : busqueda "
-		        + " OR au.Apellido LIKE : busqueda "
-		        + " OR au.Pais LIKE : busqueda "
-		        + " OR au.Direccion LIKE : busqueda "
-		        + " OR au.Telefono LIKE : busqueda "
-		        + " OR au.Correo LIKE : busqueda "
-		        , Autor.class);
-		query.setParameter("busqueda", "%"+busqueda+"%");
+		        + "WHERE au.nombre LIKE :busqueda "
+		        + "OR au.apellido LIKE :busqueda "
+		        + "OR au.pais LIKE :busqueda "
+		        + "OR au.direccion LIKE :busqueda "
+		        + "OR au.telefono LIKE :busqueda "
+		        + "OR au.correo LIKE :busqueda", Autor.class);
+		query.setParameter("busqueda", "%" + busqueda + "%");
 		return query.getResultList();
 	}
-
 }
+

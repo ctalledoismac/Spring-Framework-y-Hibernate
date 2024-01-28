@@ -22,16 +22,16 @@ public class PrincipalLibro {
         AutorDAO autorDAO = context.getBean("autorDAOImpl", AutorDAO.class);
 
         // Add
-        Categoria categoria = categoriaDAO.findOne(1);
-        Autor autor = autorDAO.findOne(1);
-        Libro libro = new Libro(0, "Hola Mundo", "Cr7", 50, "1st", "Espanish", new Date(), "Programacion", "Pasta Blanda", "123456789", "20", "Portada", "Fisico", 50.0, categoria, autor);
+        //Categoria categoria = categoriaDAO.findOne(1);
+        //Autor autor = autorDAO.findOne(1);
+        //Libro libro = new Libro(0, "Hola Mundo", "Cr7", 50, "1st", "Espanish", new Date(), "Programacion", "Pasta Blanda", "123456789", "20", "Portada", "Fisico", 50.0, categoria, autor);
  
         //libroDAO.add(libro);
 
         // Update
-        Categoria categoria2 = categoriaDAO.findOne(2);
-        Autor autor2 = autorDAO.findOne(2);
-        Libro libro2 = new Libro(79, "hi word", "EC", 50, "1st", "Espanish", new Date(), "Programacion", "Pasta Blanda", "123456789", "20", "Portada", "Fisico", 50.0, categoria2, autor2);
+        //Categoria categoria2 = categoriaDAO.findOne(2);
+        //Autor autor2 = autorDAO.findOne(2);
+        //Libro libro2 = new Libro(79, "hi word", "EC", 50, "1st", "Espanish", new Date(), "Programacion", "Pasta Blanda", "123456789", "20", "Portada", "Fisico", 50.0, categoria2, autor2);
  
         //libroDAO.update(libro2);
 
@@ -39,21 +39,22 @@ public class PrincipalLibro {
         //libroDAO.delete(79);
 
         // FindAll
-        List<Libro> libros = libroDAO.findAll();
+        //List<Libro> libros = libroDAO.findAll();
 
-        for (Libro item : libros) {
+        //for (Libro item : libros) {
              //System.out.println(item.toString());
-        }
+       //}
 
         // FindOne
         // Libro libro = libroDAO.findOne(1);
         // System.out.println(libro.toString());
 
         // FindAll Busqueda
-        // List<Libro> libros2 = libroDAO.findAll("pam");
-        // for (Libro libro3 : libros2) {
-        // System.out.println(libro3.toString());
-
+        List<Libro> libros2 = libroDAO.findAll("action");
+        for (Libro libro3 : libros2) {
+            System.out.println(libro3.toString());
+        }	
+        		
         context.close();
     }
 }

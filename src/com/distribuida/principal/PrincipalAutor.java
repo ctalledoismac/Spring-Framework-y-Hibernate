@@ -28,11 +28,11 @@ public class PrincipalAutor {
         // autorDAO.delete(54);
 
         // FindAll
-        List<Autor> autores = autorDAO.findAll();
+       // List<Autor> autores = autorDAO.findAll();
 
-        for (Autor item : autores) {
-            System.out.println(item.toString());
-        }
+        //for (Autor item : autores) {
+          //  System.out.println(item.toString());
+       // }
 
         // FindOne
         // Autor autor = autorDAO.findOne(1);

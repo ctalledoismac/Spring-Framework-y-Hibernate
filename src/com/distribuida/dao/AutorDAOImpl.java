@@ -15,77 +15,76 @@ import com.distribuida.entities.Autor;
 @Repository
 public class AutorDAOImpl implements AutorDAO {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Override
-	@Transactional
-	public List<Autor> findAll() {
-		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("SELECT au FROM Autor au", Autor.class).getResultList();
-	}
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	@Override
-	@Transactional
-	public Autor findOne(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Query<Autor> query = session.createQuery("SELECT au FROM Autor au WHERE au.idAutor = :keyIdAutor", Autor.class);
-		query.setParameter("keyIdAutor", id);
-		return query.uniqueResult();
-	}
+    @Override
+    @Transactional
+    public List<Autor> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("SELECT au FROM Autor au", Autor.class).getResultList();
+    }
 
-	@Override
-	@Transactional
-	public void add(Autor autor) {
-		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(autor);
-	}
+    @Override
+    @Transactional
+    public Autor findOne(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Autor> query = session.createQuery("SELECT au FROM Autor au WHERE au.idAutor = :keyIdAutor", Autor.class);
+        query.setParameter("keyIdAutor", id);
+        return query.uniqueResult();
+    }
 
-	@Override
-	@Transactional
-	public void update(Autor autor) {
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("UPDATE Autor SET nombre = :Nombre, "
-				+ "apellido = :Apellido, "
-				+ "pais = :Pais, "
-				+ "direccion = :Direccion, "
-				+ "telefono = :Telefono, "
-				+ "correo = :Correo "
-				+ "WHERE idAutor = :idAutor");
-		
-		query.setParameter("Nombre", autor.getNombre());
-		query.setParameter("Apellido", autor.getApellido());
-		query.setParameter("Pais", autor.getPais());
-		query.setParameter("Direccion", autor.getDireccion());
-		query.setParameter("Telefono", autor.getTelefono());
-		query.setParameter("Correo", autor.getCorreo());
-		query.setParameter("idAutor", autor.getIdAutor());
+    @Override
+    @Transactional
+    public void add(Autor autor) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(autor);
+    }
 
-		query.executeUpdate();
-	}
+    @Override
+    @Transactional
+    public void update(Autor autor) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("UPDATE Autor SET nombre = :Nombre, "
+                + "apellido = :Apellido, "
+                + "pais = :Pais, "
+                + "direccion = :Direccion, "
+                + "telefono = :Telefono, "
+                + "correo = :Correo "
+                + "WHERE idAutor = :idAutor");
 
-	@Override
-	@Transactional
-	public void delete(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("DELETE FROM Autor au WHERE au.idAutor = :idAutor");
-		query.setParameter("idAutor", id);
-		query.executeUpdate();
-	}
+        query.setParameter("Nombre", autor.getNombre());
+        query.setParameter("Apellido", autor.getApellido());
+        query.setParameter("Pais", autor.getPais());
+        query.setParameter("Direccion", autor.getDireccion());
+        query.setParameter("Telefono", autor.getTelefono());
+        query.setParameter("Correo", autor.getCorreo());
+        query.setParameter("idAutor", autor.getIdAutor());
 
-	@Override
-	@Transactional
-	public List<Autor> findAll(String busqueda) {
-		Session session = sessionFactory.getCurrentSession();
-		Query<Autor> query = session.createQuery("SELECT au FROM Autor au "
-		        + "WHERE au.nombre LIKE :busqueda "
-		        + "OR au.apellido LIKE :busqueda "
-		        + "OR au.pais LIKE :busqueda "
-		        + "OR au.direccion LIKE :busqueda "
-		        + "OR au.telefono LIKE :busqueda "
-		        + "OR au.correo LIKE :busqueda", Autor.class);
-		query.setParameter("busqueda", "%" + busqueda + "%");
-		return query.getResultList();
-	}
+        query.executeUpdate();
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("DELETE FROM Autor au WHERE au.idAutor = :idAutor");
+        query.setParameter("idAutor", id);
+        query.executeUpdate();
+    }
+
+    @Override
+    @Transactional
+    public List<Autor> findAll(String busqueda) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Autor> query = session.createQuery("SELECT au FROM Autor au "
+                + "WHERE au.Nombre LIKE :busqueda "
+                + "OR au.Apellido LIKE :busqueda "
+                + "OR au.Pais LIKE :busqueda "
+                + "OR au.Direccion LIKE :busqueda "
+                + "OR au.Telefono LIKE :busqueda "
+                + "OR au.Correo LIKE :busqueda", Autor.class);
+        query.setParameter("busqueda", "%" + busqueda + "%");
+        return query.getResultList();
+    }
 }
-

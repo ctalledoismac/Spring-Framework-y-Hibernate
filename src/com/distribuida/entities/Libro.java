@@ -129,12 +129,12 @@ public class Libro {
 		Idioma = idioma;
 	}
 
-	public Date getFechaPublicacionl() {
-		return fechaPublicacion;
+	public Date getFechaPublicacion() {
+	    return fechaPublicacion;
 	}
 
-	public void setFechaPublicacionl(Date fechaPublicacion) {
-		this.fechaPublicacion = fechaPublicacion;
+	public void setFechaPublicacion(Date fechaPublicacion) {
+	    this.fechaPublicacion = fechaPublicacion;
 	}
 
 	public String getDescripcion() {

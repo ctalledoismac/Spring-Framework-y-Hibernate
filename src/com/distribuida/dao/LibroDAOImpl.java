@@ -68,7 +68,7 @@ public class LibroDAOImpl implements LibroDAO {
 	    query.setParameter("numPaginas", libro.getNumPaginas());
 	    query.setParameter("edicion", libro.getEdicion());
 	    query.setParameter("idioma", libro.getIdioma());
-	    query.setParameter("fechaPublicacion", libro.getFechaPublicacionl());
+	    query.setParameter("fechaPublicacion", libro.getFechaPublicacion());
 	    query.setParameter("descripcion", libro.getDescripcion());
 	    query.setParameter("tipoPasta", libro.getTipoPasta());
 	    query.setParameter("ISBN", libro.getISBN());
@@ -96,13 +96,13 @@ public class LibroDAOImpl implements LibroDAO {
 	@Override
 	@Transactional
 	public List<Libro> findAll(String busqueda) {
-		Session session = sessionFactory.getCurrentSession();
-		Query<Libro> query = session.createQuery("SELECT l FROM Libro l "
-		        + "WHERE l.titulo LIKE :busqueda "
-		        + "OR l.descripcion LIKE :busqueda", Libro.class);
-		query.setParameter("busqueda", "%" + busqueda + "%");
-		return query.getResultList();
-	}
+        Session session = sessionFactory.getCurrentSession();
+        Query<Libro> query = session.createQuery("SELECT l FROM Libro l "
+                + "WHERE l.Titulo LIKE :busqueda "
+                + "OR l.Descripcion LIKE :busqueda", Libro.class);
+        query.setParameter("busqueda", "%" + busqueda + "%");
+        return query.getResultList();
+    }
 }
 
 

@@ -23,13 +23,13 @@ public class PrincipalFacturaDetalle {
         // Add
         Factura factura = facturaDAO.findOne(1);
         Libro libro = libroDAO.findOne(1);
-        FacturaDetalle facturaDetalle = new FacturaDetalle(0, 1, 25.0, factura, libro);
+        FacturaDetalle facturaDetalle = new FacturaDetalle(0, 1, 25.0);
         //facturaDetalleDAO.add(facturaDetalle);
 
         // Update
         Factura factura2 = facturaDAO.findOne(2);
         Libro libro2 = libroDAO.findOne(2);
-        FacturaDetalle facturaDetalle2 = new FacturaDetalle(210, 50, 55.0, factura2, libro2);
+        FacturaDetalle facturaDetalle2 = new FacturaDetalle(210, 50, 55.0);
         //facturaDetalleDAO.update(facturaDetalle2);
 
         // Delete

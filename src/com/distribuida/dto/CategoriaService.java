@@ -17,4 +17,9 @@ public List<Categoria> findAll();
 	public void delete(int id);
 	
 	public List<Categoria> findAll(String busqueda);
+	
+	public void add(int idCategoria, String categoria, String descripcion);
+	
+	public void up(int idCategoria, String categoria, String descripcion);
+
 }

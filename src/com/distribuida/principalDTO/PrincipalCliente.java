@@ -19,16 +19,13 @@ public class PrincipalCliente {
 		
 		//CRUD
 		//Add
-		//Cliente cliente2 = new Cliente(0, "1234678993", "Jogg3", "Larrs3", "Rio", "0241667455", "Lars@gmail.com");
-		//clienteService.add(cliente2);
+		//clienteService.add(0, "1234678993", "Jogg3", "Larrs3", "Rio", "0241667455", "Lars@gmail.com");
 		
 		//Update
-		//Cliente cliente3 = new Cliente(44, "11581878984", "Jarsrr", "Rarrs", "Rio", "02518455", "Rarrs@gmail.com");
-		//clienteService.up(cliente3);
+		//clienteService.up(44, "11581878984", "Jarsrr", "Rarrs", "Rio", "02518455", "Rarrs@gmail.com");
 		
 		//Delete
-		clienteService.del(44);
-		clienteService.del(43);
+		//clienteService.del(44);
 		
 		//FinOne
 		//Cliente cliente = clienteService.findOne(1);

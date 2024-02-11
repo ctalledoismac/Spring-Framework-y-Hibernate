@@ -12,8 +12,14 @@ public List<Cliente> finAll();
 	
 	public void add(Cliente cliente);
 	
+	public void add(int idCliente, String cedula, String nombre, String apellido, String direccion, String telefono,
+			String correo);
+	
 	public void up(Cliente cliente);
 	
-	public void del(int id);	
+	public void del(int id);
+
+	void up(int idCliente, String cedula, String nombre, String apellido, String direccion, String telefono,
+			String correo);	
 	
 }

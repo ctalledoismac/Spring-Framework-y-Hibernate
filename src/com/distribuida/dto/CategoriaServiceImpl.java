@@ -50,4 +50,18 @@ public class CategoriaServiceImpl implements CategoriaService {
 		return categoriaDAO.findAll(busqueda);
 	}
 
+	@Override
+	public void add(int idCategoria, String categoria, String descripcion) {
+		// TODO Auto-generated method stub
+		Categoria categoria1 = new Categoria(idCategoria, categoria, descripcion);
+		categoriaDAO.add(categoria1);
+	}
+
+	@Override
+	public void up(int idCategoria, String categoria, String descripcion) {
+		// TODO Auto-generated method stub
+		Categoria categoria1 = new Categoria(idCategoria, categoria, descripcion);
+		categoriaDAO.update(categoria1);
+	}
+
 }

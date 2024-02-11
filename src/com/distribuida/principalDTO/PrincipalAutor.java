@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.distribuida.dao.AutorDAO;
 import com.distribuida.dto.AutorService;
 import com.distribuida.entities.Autor;
 
@@ -18,22 +17,13 @@ public class PrincipalAutor {
         // Crud
 
         // Add
-        //Autor autor = new Autor(0, "nombre1", "apellido1", "pais1", "direccion1", "telefono1", "correo1");
-        //autorService.add(autor);
+        //autorService.add(0, "nombre1", "apellido1", "pais1", "direccion1", "telefono1", "correo1");
 
         // Update
-        //Autor autor2 = new Autor(61, "nombre1ssd", "apellido1ssd", "pais1ssd", "direccion1", "telefono1", "correo1");
-        //autorService.update(autor2);
+        autorService.update(61, "nombre1ssd", "apellido1ssd", "pais1ssd", "direccion1", "telefono1", "correo1");
 
         // Delete
-        autorService.delete(55);
-        autorService.delete(56);
-        autorService.delete(57);
-        autorService.delete(58);
-        autorService.delete(59);
-        autorService.delete(60);
-        autorService.delete(61);
-        
+        autorService.delete(55);        
 
         // FindAll
         //List<Autor> autores = autorService.findAll();

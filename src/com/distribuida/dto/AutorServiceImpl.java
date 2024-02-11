@@ -50,4 +50,21 @@ public class AutorServiceImpl implements AutorService {
 		return autorDAO.findAll(busqueda);
 	}
 
+	@Override
+	public void add(int idAutor, String nombre, String apellido, String pais, String direccion, String telefono,
+			String correo) {
+		// TODO Auto-generated method stub
+		Autor autor = new Autor(idAutor, nombre, apellido, pais, direccion, telefono, correo);
+		autorDAO.add(autor);
+	}
+
+	@Override
+	public void update(int idAutor, String nombre, String apellido, String pais, String direccion, String telefono,
+			String correo) {
+		// TODO Auto-generated method stub
+		Autor autor = new Autor(idAutor, nombre, apellido, pais, direccion, telefono, correo);
+		autorDAO.update(autor);
+	}
+
+
 }

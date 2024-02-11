@@ -41,15 +41,13 @@ public class Factura {
 	public Factura() {}
 	
 
-	public Factura(int idFactura, String numFactura, Date fecha, Double totalNeto, Double iva, Double total,
-			Cliente cliente) {
+	public Factura(int idFactura, String numFactura, Date fecha, Double totalNeto, Double iva, Double total) {
 		this.idFactura = idFactura;
 		this.numFactura = numFactura;
-		Fecha = fecha;
+		this.Fecha = fecha;
 		this.totalNeto = totalNeto;
-		Iva = iva;
-		Total = total;
-		this.cliente = cliente;
+		this.Iva = iva;
+		this.Total = total;
 	}
 
 	public int getIdFactura() {

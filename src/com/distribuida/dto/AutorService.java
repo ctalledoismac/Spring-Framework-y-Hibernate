@@ -17,5 +17,11 @@ public List<Autor> findAll();
 	public void delete(int id);
 
 	public List<Autor> findAll(String busqueda);
+
+	public void add(int idAutor, String nombre, String apellido, String pais, String direccion, String telefono,
+			String correo);
+
+	public void update(int idAutor, String nombre, String apellido, String pais, String direccion, String telefono,
+			String correo);
 	
 }

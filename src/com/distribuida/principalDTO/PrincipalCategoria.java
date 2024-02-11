@@ -16,15 +16,13 @@ public class PrincipalCategoria {
 		CategoriaService categoriaService = context.getBean("categoriaServiceImpl", CategoriaService.class);
 		
 		// Add
-		//Categoria categoria = new Categoria(0, "categoria", "descripcion");
-		//categoriaService.add(categoria);
+		//categoriaService.add(0, "categoria", "descripcion");
 
 		// Update
-		//Categoria categoria2 = new Categoria(58, "categoria66", "descripcion66");
-		//categoriaService.update(categoria2);
+		//categoriaService.update(58, "categoria66", "descripcion66");
 
 		// Delete
-		categoriaService.delete(58);
+		//categoriaService.delete(58);
 
 		// FindAll
 		//List<Categoria> categorias = categoriaService.findAll();

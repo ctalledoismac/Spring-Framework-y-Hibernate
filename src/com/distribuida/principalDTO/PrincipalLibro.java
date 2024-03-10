@@ -1,6 +1,6 @@
 package com.distribuida.principalDTO;
 
-import java.util.List;
+import java.util.Date;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,32 +14,26 @@ public class PrincipalLibro {
 
         LibroService libroService = context.getBean("libroServiceImpl", LibroService.class);
 
+        // Crud
+
         // Add
-        //libroService.add(0, "Hola Mundo", "Cr7", 50, "1st", "Espanish", new Date(), "Programacion", "Pasta Blanda", "123456789", "20", "Portada", "Fisico", 50.0, 1, 1);
+        libroService.add(0, "titulo1", "editorial1", 100, "edicion1", "idioma1", new Date(), "descripcion1", "pasta1", "isbn1", "1", "portada1", "presentacion1", 20.20, 1, 1);
+        System.out.println(">>>>>ADD>>>>>"+libroService.findOne(70));
 
         // Update
-        //libroService.up(79, "hi word", "EC", 50, "1st", "Espanish", new Date(), "Programacion", "Pasta Blanda", "123456789", "20", "Portada", "Fisico", 50.0, 2, 2);
-
+        libroService.up(70, "titulo1", "editorial1", 100, "edicion1", "idioma1", new Date(), "descripcion1", "pasta1", "isbn1", "1", "portada1", "presentacion1", 20.20, 1, 1);
+        System.out.println(">>>>>UP>>>>>"+libroService.findOne(70));
         // Delete
-        //libroService.delete(79);
+        libroService.delete(70);
+        
+        try {System.out.println(">>>>>DEL>>>>>"+libroService.findOne(70));} catch (Exception e) {e.printStackTrace();}
 
         // FindAll
-        List<Libro> libros = libroService.findAll();
-
-        for (Libro item : libros) {
-             //System.out.println(item.toString());
+        for (Libro item : libroService.findAll()) {
+        		System.out.println(item.toString());
         }
 
-        // FindOne
-        Libro libro3 = libroService.findOne(1);
-        //System.out.println(libro3.toString());
-
-        // FindAll Busqueda
-        //List<Libro> libros2 = libroService.findAll("action");
-        //for (Libro libro3 : libros2) {
-        //    System.out.println(libro3.toString());
-        //}	
-        		
         context.close();
     }
 }
+

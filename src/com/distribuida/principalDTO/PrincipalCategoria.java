@@ -4,42 +4,36 @@ import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.distribuida.dao.CategoriaDAO;
 import com.distribuida.dto.CategoriaService;
 import com.distribuida.entities.Categoria;
 
 public class PrincipalCategoria {
 
-	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-		
-		CategoriaService categoriaService = context.getBean("categoriaServiceImpl", CategoriaService.class);
-		
-		// Add
-		//categoriaService.add(0, "categoria", "descripcion");
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 
-		// Update
-		//categoriaService.update(58, "categoria66", "descripcion66");
+        CategoriaService categoriaService = context.getBean("CategoriaServiceImpl", CategoriaService.class);
 
-		// Delete
-		//categoriaService.delete(58);
+        // Crud
 
-		// FindAll
-		//List<Categoria> categorias = categoriaService.findAll();
-		//for (Categoria item : categorias) {
-			//System.out.println(item.toString());
-		//}
+        // Add
+        categoriaService.add(0, "categoria1", "descripcion1");
+        System.out.println(">>>>>ADD>>>>>"+categoriaService.findOne(58));
 
-		// FindOne
-		//Categoria categoria = categoriaService.findOne(1);
-		//System.out.println(categoria.toString());
+        // Update
+        categoriaService.up(58, "categoria2", "descripcion2");
+        System.out.println(">>>>>UP>>>>>"+categoriaService.findOne(58));
+        // Delete
+        categoriaService.delete(58);
+        
+        try {System.out.println(">>>>>DEL>>>>>"+categoriaService.findOne(58));} catch (Exception e) {e.printStackTrace();}
 
-		// FindAll Busqueda
-		//List<Categoria> categorias2 = categoriaService.findAll("Filosofia");
-		//for (Categoria categoria3 : categorias2) {
-			//System.out.println(categoria3.toString());
-		//}
+        // FindAll
+        for (Categoria item : categoriaService.findAll()) {
+        		System.out.println(item.toString());
+        }
 
-		context.close();
-	}
+        context.close();
+    }
 }
+
